@@ -1,673 +1,740 @@
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>DevOps Crush Course</title><style>
-/* cspell:disable-file */
-/* webkit printing magic: print all background colors */
-html {
-	-webkit-print-color-adjust: exact;
-}
-* {
-	box-sizing: border-box;
-	-webkit-print-color-adjust: exact;
-}
-
-html,
-body {
-	margin: 0;
-	padding: 0;
-}
-@media only screen {
-	body {
-		margin: 2em auto;
-		max-width: 900px;
-		color: rgb(55, 53, 47);
+	/* cspell:disable-file */
+	/* webkit printing magic: print all background colors */
+	html {
+		-webkit-print-color-adjust: exact;
 	}
-}
-
-body {
-	line-height: 1.5;
-	white-space: pre-wrap;
-}
-
-a,
-a.visited {
-	color: inherit;
-	text-decoration: underline;
-}
-
-.pdf-relative-link-path {
-	font-size: 80%;
-	color: #444;
-}
-
-h1,
-h2,
-h3 {
-	letter-spacing: -0.01em;
-	line-height: 1.2;
-	font-weight: 600;
-	margin-bottom: 0;
-}
-
-.page-title {
-	font-size: 2.5rem;
-	font-weight: 700;
-	margin-top: 0;
-	margin-bottom: 0.75em;
-}
-
-h1 {
-	font-size: 1.875rem;
-	margin-top: 1.875rem;
-}
-
-h2 {
-	font-size: 1.5rem;
-	margin-top: 1.5rem;
-}
-
-h3 {
-	font-size: 1.25rem;
-	margin-top: 1.25rem;
-}
-
-.source {
-	border: 1px solid #ddd;
-	border-radius: 3px;
-	padding: 1.5em;
-	word-break: break-all;
-}
-
-.callout {
-	border-radius: 3px;
-	padding: 1rem;
-}
-
-figure {
-	margin: 1.25em 0;
-	page-break-inside: avoid;
-}
-
-figcaption {
-	opacity: 0.5;
-	font-size: 85%;
-	margin-top: 0.5em;
-}
-
-mark {
-	background-color: transparent;
-}
-
-.indented {
-	padding-left: 1.5em;
-}
-
-hr {
-	background: transparent;
-	display: block;
-	width: 100%;
-	height: 1px;
-	visibility: visible;
-	border: none;
-	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
-}
-
-img {
-	max-width: 100%;
-}
-
-@media only print {
-	img {
-		max-height: 100vh;
-		object-fit: contain;
+	* {
+		box-sizing: border-box;
+		-webkit-print-color-adjust: exact;
 	}
-}
-
-@page {
-	margin: 1in;
-}
-
-.collection-content {
-	font-size: 0.875rem;
-}
-
-.column-list {
-	display: flex;
-	justify-content: space-between;
-}
-
-.column {
-	padding: 0 1em;
-}
-
-.column:first-child {
-	padding-left: 0;
-}
-
-.column:last-child {
-	padding-right: 0;
-}
-
-.table_of_contents-item {
-	display: block;
-	font-size: 0.875rem;
-	line-height: 1.3;
-	padding: 0.125rem;
-}
-
-.table_of_contents-indent-1 {
-	margin-left: 1.5rem;
-}
-
-.table_of_contents-indent-2 {
-	margin-left: 3rem;
-}
-
-.table_of_contents-indent-3 {
-	margin-left: 4.5rem;
-}
-
-.table_of_contents-link {
-	text-decoration: none;
-	opacity: 0.7;
-	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
-}
-
-table,
-th,
-td {
-	border: 1px solid rgba(55, 53, 47, 0.09);
-	border-collapse: collapse;
-}
-
-table {
-	border-left: none;
-	border-right: none;
-}
-
-th,
-td {
-	font-weight: normal;
-	padding: 0.25em 0.5em;
-	line-height: 1.5;
-	min-height: 1.5em;
-	text-align: left;
-}
-
-th {
-	color: rgba(55, 53, 47, 0.6);
-}
-
-ol,
-ul {
-	margin: 0;
-	margin-block-start: 0.6em;
-	margin-block-end: 0.6em;
-}
-
-li > ol:first-child,
-li > ul:first-child {
-	margin-block-start: 0.6em;
-}
-
-ul > li {
-	list-style: disc;
-}
-
-ul.to-do-list {
-	text-indent: -1.7em;
-}
-
-ul.to-do-list > li {
-	list-style: none;
-}
-
-.to-do-children-checked {
-	text-decoration: line-through;
-	opacity: 0.375;
-}
-
-ul.toggle > li {
-	list-style: none;
-}
-
-ul {
-	padding-inline-start: 1.7em;
-}
-
-ul > li {
-	padding-left: 0.1em;
-}
-
-ol {
-	padding-inline-start: 1.6em;
-}
-
-ol > li {
-	padding-left: 0.2em;
-}
-
-.mono ol {
-	padding-inline-start: 2em;
-}
-
-.mono ol > li {
-	text-indent: -0.4em;
-}
-
-.toggle {
-	padding-inline-start: 0em;
-	list-style-type: none;
-}
-
-/* Indent toggle children */
-.toggle > li > details {
-	padding-left: 1.7em;
-}
-
-.toggle > li > details > summary {
-	margin-left: -1.1em;
-}
-
-.selected-value {
-	display: inline-block;
-	padding: 0 0.5em;
-	background: rgba(206, 205, 202, 0.5);
-	border-radius: 3px;
-	margin-right: 0.5em;
-	margin-top: 0.3em;
-	margin-bottom: 0.3em;
-	white-space: nowrap;
-}
-
-.collection-title {
-	display: inline-block;
-	margin-right: 1em;
-}
-
-.simple-table {
-	margin-top: 1em;
-	font-size: 0.875rem;
-	empty-cells: show;
-}
-.simple-table td {
-	height: 29px;
-	min-width: 120px;
-}
-
-.simple-table th {
-	height: 29px;
-	min-width: 120px;
-}
-
-.simple-table-header-color {
-	background: rgb(247, 246, 243);
-	color: black;
-}
-.simple-table-header {
-	font-weight: 500;
-}
-
-time {
-	opacity: 0.5;
-}
-
-.icon {
-	display: inline-block;
-	max-width: 1.2em;
-	max-height: 1.2em;
-	text-decoration: none;
-	vertical-align: text-bottom;
-	margin-right: 0.5em;
-}
-
-img.icon {
-	border-radius: 3px;
-}
-
-.user-icon {
-	width: 1.5em;
-	height: 1.5em;
-	border-radius: 100%;
-	margin-right: 0.5rem;
-}
-
-.user-icon-inner {
-	font-size: 0.8em;
-}
-
-.text-icon {
-	border: 1px solid #000;
-	text-align: center;
-}
-
-.page-cover-image {
-	display: block;
-	object-fit: cover;
-	width: 100%;
-	max-height: 30vh;
-}
-
-.page-header-icon {
-	font-size: 3rem;
-	margin-bottom: 1rem;
-}
-
-.page-header-icon-with-cover {
-	margin-top: -0.72em;
-	margin-left: 0.07em;
-}
-
-.page-header-icon img {
-	border-radius: 3px;
-}
-
-.link-to-page {
-	margin: 1em 0;
-	padding: 0;
-	border: none;
-	font-weight: 500;
-}
-
-p > .user {
-	opacity: 0.5;
-}
-
-td > .user,
-td > time {
-	white-space: nowrap;
-}
-
-input[type="checkbox"] {
-	transform: scale(1.5);
-	margin-right: 0.6em;
-	vertical-align: middle;
-}
-
-p {
-	margin-top: 0.5em;
-	margin-bottom: 0.5em;
-}
-
-.image {
-	border: none;
-	margin: 1.5em 0;
-	padding: 0;
-	border-radius: 0;
-	text-align: center;
-}
-
-.code,
-code {
-	background: rgba(135, 131, 120, 0.15);
-	border-radius: 3px;
-	padding: 0.2em 0.4em;
-	border-radius: 3px;
-	font-size: 85%;
-	tab-size: 2;
-}
-
-code {
-	color: #eb5757;
-}
-
-.code {
-	padding: 1.5em 1em;
-}
-
-.code-wrap {
-	white-space: pre-wrap;
-	word-break: break-all;
-}
-
-.code > code {
-	background: none;
-	padding: 0;
-	font-size: 100%;
-	color: inherit;
-}
-
-blockquote {
-	font-size: 1.25em;
-	margin: 1em 0;
-	padding-left: 1em;
-	border-left: 3px solid rgb(55, 53, 47);
-}
-
-.bookmark {
-	text-decoration: none;
-	max-height: 8em;
-	padding: 0;
-	display: flex;
-	width: 100%;
-	align-items: stretch;
-}
-
-.bookmark-title {
-	font-size: 0.85em;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	height: 1.75em;
-	white-space: nowrap;
-}
-
-.bookmark-text {
-	display: flex;
-	flex-direction: column;
-}
-
-.bookmark-info {
-	flex: 4 1 180px;
-	padding: 12px 14px 14px;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-}
-
-.bookmark-image {
-	width: 33%;
-	flex: 1 1 180px;
-	display: block;
-	position: relative;
-	object-fit: cover;
-	border-radius: 1px;
-}
-
-.bookmark-description {
-	color: rgba(55, 53, 47, 0.6);
-	font-size: 0.75em;
-	overflow: hidden;
-	max-height: 4.5em;
-	word-break: break-word;
-}
-
-.bookmark-href {
-	font-size: 0.75em;
-	margin-top: 0.25em;
-}
-
-.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
-.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
-.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
-.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
-.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
-.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
-.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
-.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
-.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
-.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
-.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
-.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
-.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
-.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
-.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
-.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
-.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
-.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
-.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
-.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
-.highlight-default {
-	color: rgba(55, 53, 47, 1);
-}
-.highlight-gray {
-	color: rgba(120, 119, 116, 1);
-	fill: rgba(120, 119, 116, 1);
-}
-.highlight-brown {
-	color: rgba(159, 107, 83, 1);
-	fill: rgba(159, 107, 83, 1);
-}
-.highlight-orange {
-	color: rgba(217, 115, 13, 1);
-	fill: rgba(217, 115, 13, 1);
-}
-.highlight-yellow {
-	color: rgba(203, 145, 47, 1);
-	fill: rgba(203, 145, 47, 1);
-}
-.highlight-teal {
-	color: rgba(68, 131, 97, 1);
-	fill: rgba(68, 131, 97, 1);
-}
-.highlight-blue {
-	color: rgba(51, 126, 169, 1);
-	fill: rgba(51, 126, 169, 1);
-}
-.highlight-purple {
-	color: rgba(144, 101, 176, 1);
-	fill: rgba(144, 101, 176, 1);
-}
-.highlight-pink {
-	color: rgba(193, 76, 138, 1);
-	fill: rgba(193, 76, 138, 1);
-}
-.highlight-red {
-	color: rgba(212, 76, 71, 1);
-	fill: rgba(212, 76, 71, 1);
-}
-.highlight-gray_background {
-	background: rgba(241, 241, 239, 1);
-}
-.highlight-brown_background {
-	background: rgba(244, 238, 238, 1);
-}
-.highlight-orange_background {
-	background: rgba(251, 236, 221, 1);
-}
-.highlight-yellow_background {
-	background: rgba(251, 243, 219, 1);
-}
-.highlight-teal_background {
-	background: rgba(237, 243, 236, 1);
-}
-.highlight-blue_background {
-	background: rgba(231, 243, 248, 1);
-}
-.highlight-purple_background {
-	background: rgba(244, 240, 247, 0.8);
-}
-.highlight-pink_background {
-	background: rgba(249, 238, 243, 0.8);
-}
-.highlight-red_background {
-	background: rgba(253, 235, 236, 1);
-}
-.block-color-default {
-	color: inherit;
-	fill: inherit;
-}
-.block-color-gray {
-	color: rgba(120, 119, 116, 1);
-	fill: rgba(120, 119, 116, 1);
-}
-.block-color-brown {
-	color: rgba(159, 107, 83, 1);
-	fill: rgba(159, 107, 83, 1);
-}
-.block-color-orange {
-	color: rgba(217, 115, 13, 1);
-	fill: rgba(217, 115, 13, 1);
-}
-.block-color-yellow {
-	color: rgba(203, 145, 47, 1);
-	fill: rgba(203, 145, 47, 1);
-}
-.block-color-teal {
-	color: rgba(68, 131, 97, 1);
-	fill: rgba(68, 131, 97, 1);
-}
-.block-color-blue {
-	color: rgba(51, 126, 169, 1);
-	fill: rgba(51, 126, 169, 1);
-}
-.block-color-purple {
-	color: rgba(144, 101, 176, 1);
-	fill: rgba(144, 101, 176, 1);
-}
-.block-color-pink {
-	color: rgba(193, 76, 138, 1);
-	fill: rgba(193, 76, 138, 1);
-}
-.block-color-red {
-	color: rgba(212, 76, 71, 1);
-	fill: rgba(212, 76, 71, 1);
-}
-.block-color-gray_background {
-	background: rgba(241, 241, 239, 1);
-}
-.block-color-brown_background {
-	background: rgba(244, 238, 238, 1);
-}
-.block-color-orange_background {
-	background: rgba(251, 236, 221, 1);
-}
-.block-color-yellow_background {
-	background: rgba(251, 243, 219, 1);
-}
-.block-color-teal_background {
-	background: rgba(237, 243, 236, 1);
-}
-.block-color-blue_background {
-	background: rgba(231, 243, 248, 1);
-}
-.block-color-purple_background {
-	background: rgba(244, 240, 247, 0.8);
-}
-.block-color-pink_background {
-	background: rgba(249, 238, 243, 0.8);
-}
-.block-color-red_background {
-	background: rgba(253, 235, 236, 1);
-}
-.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
-.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
-.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
-.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
-.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
-.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
-.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
-.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
-.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
-.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
-
-.checkbox {
-	display: inline-flex;
-	vertical-align: text-bottom;
-	width: 16;
-	height: 16;
-	background-size: 16px;
-	margin-left: 2px;
-	margin-right: 5px;
-}
-
-.checkbox-on {
-	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
-}
-
-.checkbox-off {
-	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
-}
 	
-</style></head><body><article id="363e28fc-b4ed-4294-88e5-e54e266bb8e2" class="page sans"><header><div class="page-header-icon undefined"><img class="icon" src="images/softserve.jpg"/></div><h1 class="page-title">DevOps Crush Course</h1></header><div class="page-body"><h2 id="0b840386-99ea-4a27-a932-3b7a37ec1478" class="">CI/CD Laboratory by Jose Alcaraz</h2><p id="a7c38c33-aed4-4327-90cd-eb0b6e779bc4" class="">
-</p><h1 id="455a2c8f-85d7-45cf-8783-3463b212ddef" class="">HELLO FROM WEB STATIC PAGE - REPOSITORY VERSION 1.0</h1><p id="5da22330-8717-46f6-98e9-5e4e941bb39f" class="">
-</p><p id="20ece153-ad98-4569-aa30-6b0e966d3af8" class="">
-</p><figure id="bb90bd3a-4544-424a-94c8-ab6ff3628aa5" class="image"><a href="images/CI_CD_Lab.png"><img style="width:1104px" src="images/CI_CD_Lab.png"/></a></figure><p id="419d6ffa-718b-483c-8dc7-83bad172f372" class="">
-</p></div></article></body></html>
+	html,
+	body {
+		margin: 0;
+		padding: 0;
+	}
+	@media only screen {
+		body {
+			margin: 2em auto;
+			max-width: 900px;
+			color: rgb(55, 53, 47);
+		}
+	}
+	
+	body {
+		line-height: 1.5;
+		white-space: pre-wrap;
+	}
+	
+	a,
+	a.visited {
+		color: inherit;
+		text-decoration: underline;
+	}
+	
+	.pdf-relative-link-path {
+		font-size: 80%;
+		color: #444;
+	}
+	
+	h1,
+	h2,
+	h3 {
+		letter-spacing: -0.01em;
+		line-height: 1.2;
+		font-weight: 600;
+		margin-bottom: 0;
+	}
+	
+	.page-title {
+		font-size: 2.5rem;
+		font-weight: 700;
+		margin-top: 0;
+		margin-bottom: 0.75em;
+	}
+	
+	h1 {
+		font-size: 1.875rem;
+		margin-top: 1.875rem;
+	}
+	
+	h2 {
+		font-size: 1.5rem;
+		margin-top: 1.5rem;
+	}
+	
+	h3 {
+		font-size: 1.25rem;
+		margin-top: 1.25rem;
+	}
+	
+	.source {
+		border: 1px solid #ddd;
+		border-radius: 3px;
+		padding: 1.5em;
+		word-break: break-all;
+	}
+	
+	.callout {
+		border-radius: 3px;
+		padding: 1rem;
+	}
+	
+	figure {
+		margin: 1.25em 0;
+		page-break-inside: avoid;
+	}
+	
+	figcaption {
+		opacity: 0.5;
+		font-size: 85%;
+		margin-top: 0.5em;
+	}
+	
+	mark {
+		background-color: transparent;
+	}
+	
+	.indented {
+		padding-left: 1.5em;
+	}
+	
+	hr {
+		background: transparent;
+		display: block;
+		width: 100%;
+		height: 1px;
+		visibility: visible;
+		border: none;
+		border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+	}
+	
+	img {
+		max-width: 100%;
+	}
+	
+	@media only print {
+		img {
+			max-height: 100vh;
+			object-fit: contain;
+		}
+	}
+	
+	@page {
+		margin: 1in;
+	}
+	
+	.collection-content {
+		font-size: 0.875rem;
+	}
+	
+	.column-list {
+		display: flex;
+		justify-content: space-between;
+	}
+	
+	.column {
+		padding: 0 1em;
+	}
+	
+	.column:first-child {
+		padding-left: 0;
+	}
+	
+	.column:last-child {
+		padding-right: 0;
+	}
+	
+	.table_of_contents-item {
+		display: block;
+		font-size: 0.875rem;
+		line-height: 1.3;
+		padding: 0.125rem;
+	}
+	
+	.table_of_contents-indent-1 {
+		margin-left: 1.5rem;
+	}
+	
+	.table_of_contents-indent-2 {
+		margin-left: 3rem;
+	}
+	
+	.table_of_contents-indent-3 {
+		margin-left: 4.5rem;
+	}
+	
+	.table_of_contents-link {
+		text-decoration: none;
+		opacity: 0.7;
+		border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+	}
+	
+	table,
+	th,
+	td {
+		border: 1px solid rgba(55, 53, 47, 0.09);
+		border-collapse: collapse;
+	}
+	
+	table {
+		border-left: none;
+		border-right: none;
+	}
+	
+	th,
+	td {
+		font-weight: normal;
+		padding: 0.25em 0.5em;
+		line-height: 1.5;
+		min-height: 1.5em;
+		text-align: left;
+	}
+	
+	th {
+		color: rgba(55, 53, 47, 0.6);
+	}
+	
+	ol,
+	ul {
+		margin: 0;
+		margin-block-start: 0.6em;
+		margin-block-end: 0.6em;
+	}
+	
+	li > ol:first-child,
+	li > ul:first-child {
+		margin-block-start: 0.6em;
+	}
+	
+	ul > li {
+		list-style: disc;
+	}
+	
+	ul.to-do-list {
+		text-indent: -1.7em;
+	}
+	
+	ul.to-do-list > li {
+		list-style: none;
+	}
+	
+	.to-do-children-checked {
+		text-decoration: line-through;
+		opacity: 0.375;
+	}
+	
+	ul.toggle > li {
+		list-style: none;
+	}
+	
+	ul {
+		padding-inline-start: 1.7em;
+	}
+	
+	ul > li {
+		padding-left: 0.1em;
+	}
+	
+	ol {
+		padding-inline-start: 1.6em;
+	}
+	
+	ol > li {
+		padding-left: 0.2em;
+	}
+	
+	.mono ol {
+		padding-inline-start: 2em;
+	}
+	
+	.mono ol > li {
+		text-indent: -0.4em;
+	}
+	
+	.toggle {
+		padding-inline-start: 0em;
+		list-style-type: none;
+	}
+	
+	/* Indent toggle children */
+	.toggle > li > details {
+		padding-left: 1.7em;
+	}
+	
+	.toggle > li > details > summary {
+		margin-left: -1.1em;
+	}
+	
+	.selected-value {
+		display: inline-block;
+		padding: 0 0.5em;
+		background: rgba(206, 205, 202, 0.5);
+		border-radius: 3px;
+		margin-right: 0.5em;
+		margin-top: 0.3em;
+		margin-bottom: 0.3em;
+		white-space: nowrap;
+	}
+	
+	.collection-title {
+		display: inline-block;
+		margin-right: 1em;
+	}
+	
+	.simple-table {
+		margin-top: 1em;
+		font-size: 0.875rem;
+		empty-cells: show;
+	}
+	.simple-table td {
+		height: 29px;
+		min-width: 120px;
+	}
+	
+	.simple-table th {
+		height: 29px;
+		min-width: 120px;
+	}
+	
+	.simple-table-header-color {
+		background: rgb(247, 246, 243);
+		color: black;
+	}
+	.simple-table-header {
+		font-weight: 500;
+	}
+	
+	time {
+		opacity: 0.5;
+	}
+	
+	.icon {
+		display: inline-block;
+		max-width: 1.2em;
+		max-height: 1.2em;
+		text-decoration: none;
+		vertical-align: text-bottom;
+		margin-right: 0.5em;
+	}
+	
+	img.icon {
+		border-radius: 3px;
+	}
+	
+	.user-icon {
+		width: 1.5em;
+		height: 1.5em;
+		border-radius: 100%;
+		margin-right: 0.5rem;
+	}
+	
+	.user-icon-inner {
+		font-size: 0.8em;
+	}
+	
+	.text-icon {
+		border: 1px solid #000;
+		text-align: center;
+	}
+	
+	.page-cover-image {
+		display: block;
+		object-fit: cover;
+		width: 100%;
+		max-height: 30vh;
+	}
+	
+	.page-header-icon {
+		font-size: 3rem;
+		margin-bottom: 1rem;
+	}
+	
+	.page-header-icon-with-cover {
+		margin-top: -0.72em;
+		margin-left: 0.07em;
+	}
+	
+	.page-header-icon img {
+		border-radius: 3px;
+	}
+	
+	.link-to-page {
+		margin: 1em 0;
+		padding: 0;
+		border: none;
+		font-weight: 500;
+	}
+	
+	p > .user {
+		opacity: 0.5;
+	}
+	
+	td > .user,
+	td > time {
+		white-space: nowrap;
+	}
+	
+	input[type="checkbox"] {
+		transform: scale(1.5);
+		margin-right: 0.6em;
+		vertical-align: middle;
+	}
+	
+	p {
+		margin-top: 0.5em;
+		margin-bottom: 0.5em;
+	}
+	
+	.image {
+		border: none;
+		margin: 1.5em 0;
+		padding: 0;
+		border-radius: 0;
+		text-align: center;
+	}
+	
+	.code,
+	code {
+		background: rgba(135, 131, 120, 0.15);
+		border-radius: 3px;
+		padding: 0.2em 0.4em;
+		border-radius: 3px;
+		font-size: 85%;
+		tab-size: 2;
+	}
+	
+	code {
+		color: #eb5757;
+	}
+	
+	.code {
+		padding: 1.5em 1em;
+	}
+	
+	.code-wrap {
+		white-space: pre-wrap;
+		word-break: break-all;
+	}
+	
+	.code > code {
+		background: none;
+		padding: 0;
+		font-size: 100%;
+		color: inherit;
+	}
+	
+	blockquote {
+		font-size: 1.25em;
+		margin: 1em 0;
+		padding-left: 1em;
+		border-left: 3px solid rgb(55, 53, 47);
+	}
+	
+	.bookmark {
+		text-decoration: none;
+		max-height: 8em;
+		padding: 0;
+		display: flex;
+		width: 100%;
+		align-items: stretch;
+	}
+	
+	.bookmark-title {
+		font-size: 0.85em;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		height: 1.75em;
+		white-space: nowrap;
+	}
+	
+	.bookmark-text {
+		display: flex;
+		flex-direction: column;
+	}
+	
+	.bookmark-info {
+		flex: 4 1 180px;
+		padding: 12px 14px 14px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+	
+	.bookmark-image {
+		width: 33%;
+		flex: 1 1 180px;
+		display: block;
+		position: relative;
+		object-fit: cover;
+		border-radius: 1px;
+	}
+	
+	.bookmark-description {
+		color: rgba(55, 53, 47, 0.6);
+		font-size: 0.75em;
+		overflow: hidden;
+		max-height: 4.5em;
+		word-break: break-word;
+	}
+	
+	.bookmark-href {
+		font-size: 0.75em;
+		margin-top: 0.25em;
+	}
+	
+	.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+	.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+	.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+	.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+	.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+	.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+	.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+	.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+	.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+	.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+	.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+	.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+	.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+	.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+	.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+	.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+	.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+	.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+	.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+	.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+	.highlight-default {
+		color: rgba(55, 53, 47, 1);
+	}
+	.highlight-gray {
+		color: rgba(120, 119, 116, 1);
+		fill: rgba(120, 119, 116, 1);
+	}
+	.highlight-brown {
+		color: rgba(159, 107, 83, 1);
+		fill: rgba(159, 107, 83, 1);
+	}
+	.highlight-orange {
+		color: rgba(217, 115, 13, 1);
+		fill: rgba(217, 115, 13, 1);
+	}
+	.highlight-yellow {
+		color: rgba(203, 145, 47, 1);
+		fill: rgba(203, 145, 47, 1);
+	}
+	.highlight-teal {
+		color: rgba(68, 131, 97, 1);
+		fill: rgba(68, 131, 97, 1);
+	}
+	.highlight-blue {
+		color: rgba(51, 126, 169, 1);
+		fill: rgba(51, 126, 169, 1);
+	}
+	.highlight-purple {
+		color: rgba(144, 101, 176, 1);
+		fill: rgba(144, 101, 176, 1);
+	}
+	.highlight-pink {
+		color: rgba(193, 76, 138, 1);
+		fill: rgba(193, 76, 138, 1);
+	}
+	.highlight-red {
+		color: rgba(212, 76, 71, 1);
+		fill: rgba(212, 76, 71, 1);
+	}
+	.highlight-gray_background {
+		background: rgba(241, 241, 239, 1);
+	}
+	.highlight-brown_background {
+		background: rgba(244, 238, 238, 1);
+	}
+	.highlight-orange_background {
+		background: rgba(251, 236, 221, 1);
+	}
+	.highlight-yellow_background {
+		background: rgba(251, 243, 219, 1);
+	}
+	.highlight-teal_background {
+		background: rgba(237, 243, 236, 1);
+	}
+	.highlight-blue_background {
+		background: rgba(231, 243, 248, 1);
+	}
+	.highlight-purple_background {
+		background: rgba(244, 240, 247, 0.8);
+	}
+	.highlight-pink_background {
+		background: rgba(249, 238, 243, 0.8);
+	}
+	.highlight-red_background {
+		background: rgba(253, 235, 236, 1);
+	}
+	.block-color-default {
+		color: inherit;
+		fill: inherit;
+	}
+	.block-color-gray {
+		color: rgba(120, 119, 116, 1);
+		fill: rgba(120, 119, 116, 1);
+	}
+	.block-color-brown {
+		color: rgba(159, 107, 83, 1);
+		fill: rgba(159, 107, 83, 1);
+	}
+	.block-color-orange {
+		color: rgba(217, 115, 13, 1);
+		fill: rgba(217, 115, 13, 1);
+	}
+	.block-color-yellow {
+		color: rgba(203, 145, 47, 1);
+		fill: rgba(203, 145, 47, 1);
+	}
+	.block-color-teal {
+		color: rgba(68, 131, 97, 1);
+		fill: rgba(68, 131, 97, 1);
+	}
+	.block-color-blue {
+		color: rgba(51, 126, 169, 1);
+		fill: rgba(51, 126, 169, 1);
+	}
+	.block-color-purple {
+		color: rgba(144, 101, 176, 1);
+		fill: rgba(144, 101, 176, 1);
+	}
+	.block-color-pink {
+		color: rgba(193, 76, 138, 1);
+		fill: rgba(193, 76, 138, 1);
+	}
+	.block-color-red {
+		color: rgba(212, 76, 71, 1);
+		fill: rgba(212, 76, 71, 1);
+	}
+	.block-color-gray_background {
+		background: rgba(241, 241, 239, 1);
+	}
+	.block-color-brown_background {
+		background: rgba(244, 238, 238, 1);
+	}
+	.block-color-orange_background {
+		background: rgba(251, 236, 221, 1);
+	}
+	.block-color-yellow_background {
+		background: rgba(251, 243, 219, 1);
+	}
+	.block-color-teal_background {
+		background: rgba(237, 243, 236, 1);
+	}
+	.block-color-blue_background {
+		background: rgba(231, 243, 248, 1);
+	}
+	.block-color-purple_background {
+		background: rgba(244, 240, 247, 0.8);
+	}
+	.block-color-pink_background {
+		background: rgba(249, 238, 243, 0.8);
+	}
+	.block-color-red_background {
+		background: rgba(253, 235, 236, 1);
+	}
+	.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+	.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+	.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+	.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+	.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+	.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+	.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+	.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+	.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+	.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+	.checkbox {
+		display: inline-flex;
+		vertical-align: text-bottom;
+		width: 16;
+		height: 16;
+		background-size: 16px;
+		margin-left: 2px;
+		margin-right: 5px;
+	}
+
+	.checkbox-on {
+		background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+	}
+
+	.checkbox-off {
+		background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+	}
+
+	</style></head><body><article id="363e28fc-b4ed-4294-88e5-e54e266bb8e2" class="page sans"><header><div class="page-header-icon undefined"><img class="icon" src="images/softserve.jpg"/></div><h1 class="page-title">DevOps Crush Course</h1></header><div class="page-body"><h2 id="0b840386-99ea-4a27-a932-3b7a37ec1478" class="">CI/CD Laboratory by Jose Alcaraz</h2><p id="a7c38c33-aed4-4327-90cd-eb0b6e779bc4" class="">
+	</p><p id="5da22330-8717-46f6-98e9-5e4e941bb39f" class="">
+	</p><p id="20ece153-ad98-4569-aa30-6b0e966d3af8" class="">
+	</p><figure id="bb90bd3a-4544-424a-94c8-ab6ff3628aa5" class="image"><a href="images/CI_CD_Lab.png"><img style="width:1104px" src="images/CI_CD_Lab.png"/></a></figure><p id="419d6ffa-718b-483c-8dc7-83bad172f372" class="">
+	</p><h2 id="8eee9230-16fd-4066-8199-efd27cd19f73" class="">Proceso de implementación:</h2><p id="5483d7e3-e0a4-4135-97ff-3e0d91d4602e" class="">
+	</p><p id="79f67edc-a494-4245-9a20-1381ee279c80" class="">
+	</p><p id="d1c9f744-0c1d-489e-b069-5ff1e417ea71" class="">
+	</p><p id="47c17f52-420c-4853-b8af-8100d06fbcf6" class="">Inicialmente para llevar a cabo el laboratorio de <strong>CI/CD</strong> se realizo la creación de un proyecto de código sencillo para la implementación de un sitio web estático. Dicho proyecto se alojó sobre un repositorio de código en <a href="https://github.com/JoseAlcarazA/CICD-test-page">GitHub</a>. Para efectos del laboratorio el repositorio de código se creó con accesibilidad publica para facilitar la descarga del código desde el nodo de trabajo de Jenkins.</p><p id="ead26ba4-fb60-48db-ba09-5d19d44a89dd" class="">
+	</p><figure id="09a91d5f-0098-48d7-af36-099ac6812207" class="image"><a href="images/Untitled.png"><img style="width:1392px" src="images/Untitled.png"/></a></figure><p id="7e088008-0ce8-4850-981a-242cb3d96f16" class="">
+	</p><p id="f72c5c47-6170-4806-9939-fd5921e8248c" class="">El proyecto de código consístete de un archivo Dockerfile usado para la construcción de la imagen de nginx que se encargará de desplegar la página web estatica:</p><pre id="1d4cf4fa-3a54-447e-9b71-f121c497b1f1" class="code"><code>FROM nginx:alpine
+
+	LABEL maintainer=&quot;alcaraza.jose@gmail.com&quot;
+
+	COPY index.html /usr/share/nginx/html/
+	COPY images /usr/share/nginx/html/images
+
+	EXPOSE 80
+
+	CMD [ &quot;nginx&quot;, &quot;-g&quot;, &quot;daemon off;&quot; ]</code></pre><p id="ebb123af-70de-489d-b7f8-d50132d1cd3c" class="">
+	</p><p id="2c0c1adb-6cec-4fbe-95a3-852993ef3a74" class="">El proyecto también posee un archivo Jenkinsfile que contiene las instrucciones que usará el pipeline de Jenkins para en primera instancia crear la imagen de Docker y finalmente almacenarla sobre un repositorio en <a href="https://hub.docker.com/repository/docker/dockerjosealcaraz/cicd-crash-course">DockerHub</a></p><pre id="b9155a70-5d9c-4e36-8d03-4809c927c30a" class="code"><code>pipeline {
+		agent { label &quot;newslave&quot; }
+		stages {
+			stage(&quot;Build&quot;) {
+				steps{
+					sh &#x27;docker build -t dockerjosealcaraz/cicd-crash-course:latest .&#x27;
+				}
+			}
+			stage(&quot;Publish&quot;) {
+				steps{
+					withDockerRegistry([credentialsId: &quot;docker-hub&quot;, url: &quot;&quot;]) {
+						sh &#x27;docker push dockerjosealcaraz/cicd-crash-course:latest&#x27;
+					}
+				}
+			}
+		}
+	}</code></pre><p id="dcaf81d5-f7f9-4bd7-aa20-b17af6a2c9c0" class="">
+	</p><p id="d2ef70b8-cca7-4263-baab-1f5f56dbde42" class="">Y finalmente el proyecto de código posee un archivo index y los recursos multimedia para el sitio web.</p><p id="0baae4e3-d34a-43a5-b0af-09d36691e7b1" class="">
+	</p><p id="405766d3-841f-438e-96d2-823206bf4474" class="">Después de la implementación de implementar el proyecto de código se procedió con la creación del servicio Jenkins. El servicio jenkins se desplegó haciendo uso de infraestructura sobre contenedores usando como base la imagen oficial de <a href="https://hub.docker.com/r/jenkins/jenkins">Jenkins </a>y mediante un documento de docker-compose:</p><pre id="9c8fd46b-10e4-46f7-91cc-b814215b207c" class="code"><code>version: &#x27;3&#x27;
+	services:
+	  jenkins:
+		container_name: jenkins
+		image: jenkins/jenkins
+		ports:
+		  - &quot;8080:8080&quot;
+		  - &quot;50000:50000&quot;
+		volumes:
+		  - jenkins_home:/var/jenkins/home
+		restart: always
+
+	volumes:
+	  jenkins_home:</code></pre><figure id="72aee58a-c09a-4caa-b8a6-8540fc355670" class="image"><a href="images/Untitled%201.png"><img style="width:1392px" src="images/Untitled%201.png"/></a></figure><p id="18ee1f4a-9bb9-4afb-9464-953c0f6692e5" class="">
+	</p><p id="3df5dd05-f1db-4951-aede-f45c5c2b79aa" class="">
+	</p><p id="9fdab078-9e02-4616-b9fb-5540fecb9055" class="">Una vez ejecutado el contendor de Jenkins, y validando que se encuentre operativo, se procede con el acceso al sitio haciendo uso del la dirección http://localhost:8080:</p><p id="94b2b474-20e0-4bb1-9dd9-768c562337a2" class="">
+	</p><figure id="803f9c14-5617-4af3-a3fb-86e6f4cf94f2" class="image"><a href="images/Untitled%202.png"><img style="width:1728px" src="images/Untitled%202.png"/></a></figure><p id="527b3b94-459e-4b21-86c3-3c9089b61829" class="">
+	</p><p id="56efec9e-ef9e-4b8a-b1c5-2fec6482fac7" class="">Al ingresar a Jenkins por primera vez se mostrará una ventana que solicita la contraseña de administrador para proceder con la configuración de la administración:</p><figure id="2b369682-4982-4d71-8ca2-37371f32b85d" class="image"><a href="images/Untitled%203.png"><img style="width:960px" src="images/Untitled%203.png"/></a></figure><p id="85f6a1de-9ca9-4876-a589-30b0b6c8a4c3" class="">
+	</p><p id="cd2b4a81-033b-46e6-9e9e-5adea8baa670" class="">Luego de ingresar la contraseña que se encuentra en la ruta dentro del contenedor /var/jenkins/secrets/initialAdminPassword, se procede con la creación de un usuario para el uso de la herramienta y se instalan los plugins recomendados:</p><figure id="73328227-b41f-4298-8668-2725f5fdac74" class="image"><a href="images/Untitled%204.png"><img style="width:960px" src="images/Untitled%204.png"/></a></figure><p id="0464fedd-5017-412b-9f9c-025cf31e553a" class="">
+	</p><p id="81072780-d530-45e5-b1d2-ae859e85a6e6" class="">Una vez la herramienta ya se encuentra lista para usarse, se procede con la configuración, en este caso se decidió por orden crear inicialmente un directorio en el que se almacenarían todos los elementos pertenecientes al laboratorio:</p><figure id="533f60b9-4cf5-4f54-8d90-7b70988e534f" class="image"><a href="images/Untitled%205.png"><img style="width:960px" src="images/Untitled%205.png"/></a></figure><p id="fac91ad7-b27c-44bc-88b9-93915f578efc" class="">
+	</p><p id="757e5bc7-85aa-4a87-8ad2-eb72164a4385" class="">También se realizó la instalación del plugin <a href="https://plugins.jenkins.io/docker-workflow"><strong>Docker Pipeline</strong></a><strong> que permitirá la ejecución de comando Docker desde el pipeline y finalmente se realizó la creación de nodo de trabajo para que Jenkins lo usará para la ejecución del pipeline (Descarga de código desde Github, Creación de imagen Docker y carga de imagen de Docker a DockerHub). En este caso se creo un servidor Ubuntu, sobre el se instaló Java para la conexión desde Jenkins, Git para la descarga del repositorio y Docker para la creación y carga de la imagen, además se garantizo que el usuario contara con privilegios para la ejecución de la tarea.</strong></p><figure id="9e8ec7e4-0e1c-4373-892f-e1e5c21b6a3c" class="image"><a href="images/Untitled%206.png"><img style="width:960px" src="images/Untitled%206.png"/></a></figure><p id="3bf4e989-867b-4ddd-bf30-adc772089897" class="">
+	</p><p id="623bdde5-ff6a-4dda-bde8-a726ff4a4e91" class="">Desde Jenkins se realizó la creación del nodo trabajador y se agregaron las credenciales para la ejecución al nodo:</p><figure id="c5271aec-7fd5-4c7f-b136-63835c31b9c0" class="image"><a href="images/Untitled%207.png"><img style="width:1296px" src="images/Untitled%207.png"/></a></figure><figure id="6011ac1a-806c-4783-9037-7cdc9881ac83" class="image"><a href="images/Untitled%208.png"><img style="width:1344px" src="images/Untitled%208.png"/></a></figure><p id="6d8bdf89-9e02-41d5-bcad-4144d1502040" class="">Una vez configurada el nodo trabajador se procede con la creación del Pipeline, en ella Se agrega el repositorio de Git que se usará, Se agrega como disparador para la tarea un web-hook de GitHub que se configurará más adelante, y finalmente se configura el scrip de pipeline para que sea tomado desde un Jenkinsfile alojado en el repositorio de Git:</p><p id="51981a33-3218-41ad-a2ef-e0de4ae471c6" class="">
+	</p><figure id="ae479fa6-ba86-4062-8eb8-9762a00e8b4f" class="image"><a href="images/Untitled%209.png"><img style="width:1344px" src="images/Untitled%209.png"/></a></figure><figure id="f801dd24-8513-4b7e-97a0-ea3a800a0067" class="image"><a href="images/Untitled%2010.png"><img style="width:1392px" src="images/Untitled%2010.png"/></a></figure><p id="b1373d01-0b31-4cc6-9360-9432da7f34cf" class="">
+	</p><p id="97d6902b-7e20-4432-a2db-5154f5f967f7" class="">Como se mencionó, para este laboratorio el disparador de ejecución del pipeline será GitHub mediante un web-hook. Esta conexión entre GitHub y Jenkins requiere que el Jenkins sea accesible desde internet y como para este caso Jenkins se montó sobre un equipo local para habilitar la visibilidad de Jenkins desde internet  se decidió realizar el montaje de un tunel HTTP usando la herramienta <a href="https://ngrok.com">Ngrok</a>. Esta herramienta permite crear un tunel http que expone un puerto local mediante una url de ngrok, para este ejemplo especifico se expuso el puerto 8080. (Tener presente que el uso de esta herramienta se realizo en un entorno de laboratorio, pero para un uso empresarial se recomienda que el servidor sobre el que se implemente Jenkins cuente con una dirección de comino publica con todos los controles de seguridad pertinentes)</p><p id="bb412a10-3ec4-4b8f-960e-ff912b4ddb18" class="">
+	</p><p id="3568d4f9-e1d0-495c-b3ab-9b098ad10038" class="">
+	</p><p id="680b3566-8904-4079-825c-ffef82b97961" class=""> </p><figure id="2faacfac-58fc-4714-a344-1dc8872a5d70" class="image"><a href="images/Untitled%2011.png"><img style="width:1248px" src="images/Untitled%2011.png"/></a></figure><p id="7a08b4ba-d5da-4721-bb76-5802043a7081" class="">
+	</p><p id="26064349-ae73-4d27-a68e-8809d51a707d" class="">Con esta dirección genera por ngrok se procede con la creción del web-hook sobre GitHub, para este caso se eligió como evento para la activación del web-hook los push realizado sobre el repositorio:</p><p id="6dccc1f9-4936-4668-8458-9b71a3882bff" class="">
+	</p><figure id="d7fc610c-d4bd-4e0b-b4a7-6b070fa71c34" class="image"><a href="images/Untitled%2012.png"><img style="width:1296px" src="images/Untitled%2012.png"/></a></figure><p id="4e6d5895-61d9-4fe1-9ff7-ef5582a67b0a" class="">
+	</p><p id="83b3af73-3daf-48b0-85e3-4b80579b3c6a" class="">
+	</p><p id="f9016212-0eb8-4a2b-8a63-f696f9d53514" class="">Antes de realizar la ejecución del pipeline, se debe tener presente que como uno de los pasos que se ejecutarán consiste en el montaje de la imagen de Docker sobre DockerHub Jenkins debe contar con las credenciales que le permitan hacer uso del repositorio de imágenes, para ellos sobre Jenkins se agregan dichas credenciales, tener presente que el ID que se creen en las credenciales será el utilizado en el pipeline:</p><figure id="277016ad-534c-4814-bd4e-0747536384c3" class="image"><a href="images/Untitled%2013.png"><img style="width:1344px" src="images/Untitled%2013.png"/></a></figure><figure id="2cb23ac3-4925-4cb4-9bd9-3845e46db780" class="image"><a href="images/Untitled%2014.png"><img style="width:1344px" src="images/Untitled%2014.png"/></a></figure><p id="286c14a6-1d77-41bd-86fa-682d95005559" class="">Finalmente, para realizar la ejecución del pipeline solo será necesario realizar un cambio sobre el repositorio de código, hacer push sobre el mismo, y todo el proceso automático será lanzado en Jenkins, a continuación se ilustra una ejecución completa del proceso:</p><p id="dbe58354-cde7-4ab1-a39b-a240716bb021" class="">
+	</p><ul id="120d3bc5-61ed-43ca-8115-cfbe20e0dd16" class="bulleted-list"><li style="list-style-type:disc">Montaje de cambio a GitHub:</li></ul><figure id="87d376e2-909e-495a-bc47-c8a99d60c3c6" class="image"><a href="images/Untitled%2015.png"><img style="width:1200px" src="images/Untitled%2015.png"/></a></figure><figure id="835fa321-a22a-44b3-a4e4-2124e71c7218" class="image"><a href="images/Untitled%2016.png"><img style="width:1200px" src="images/Untitled%2016.png"/></a></figure><p id="b525a9e3-bf9a-4761-b01a-564fd7e45628" class="">
+	</p><ul id="a9d63944-e232-4517-85b4-00e60100d323" class="bulleted-list"><li style="list-style-type:disc">Ejecución de pipeline sobre Jenkins:</li></ul><figure id="9e248cdd-d755-4a11-ba52-c70554f57462" class="image"><a href="images/Untitled%2017.png"><img style="width:1584px" src="images/Untitled%2017.png"/></a></figure><figure id="b68e885f-26f0-4eed-abec-814f889f1e9f" class="image"><a href="images/Untitled%2018.png"><img style="width:1584px" src="images/Untitled%2018.png"/></a></figure><figure id="3b3fa01e-e806-4e1a-9d1b-fa026659b5b6" class="image"><a href="images/Untitled%2019.png"><img style="width:1584px" src="images/Untitled%2019.png"/></a></figure><figure id="820deb72-7994-477c-96eb-a0fa7f89eadf" class="image"><a href="images/Untitled%2020.png"><img style="width:1584px" src="images/Untitled%2020.png"/></a></figure><p id="038d8c8e-f533-4b82-af8d-6c0bb172a68b" class="">
+	</p><ul id="7f44d30d-3520-4464-b7c3-bdea6851776f" class="bulleted-list"><li style="list-style-type:disc">Visualización de imagen en DockerHub:</li></ul><figure id="da0533f6-7e46-4339-886a-1c0a09d48c68" class="image"><a href="images/Untitled%2021.png"><img style="width:1536px" src="images/Untitled%2021.png"/></a></figure><p id="b5612bbd-855a-4c84-9110-e388efa39de0" class="">
+	</p><ul id="f72ec32d-1cab-4f31-bb3e-cf03175b5b49" class="bulleted-list"><li style="list-style-type:disc">Prueba de funcionamiento de imagen creada:</li></ul><figure id="81721d67-b2d2-4c43-9d5e-60f0496d4110" class="image"><a href="images/Untitled%2022.png"><img style="width:1536px" src="images/Untitled%2022.png"/></a></figure><figure id="9f538180-964c-4103-826f-8f6c51082f61" class="image"><a href="images/Untitled%2023.png"><img style="width:1584px" src="images/Untitled%2023.png"/></a></figure><p id="4efb8c1e-14e2-4a05-b5d1-07dfcdc65ecf" class="">
+	</p></div></article></body></html>
