@@ -3,7 +3,7 @@
  # DevOps Crash course
  ## CI/CD Laboratory
 
- Definition
+ Definition: v1.0
 
 ---
 
